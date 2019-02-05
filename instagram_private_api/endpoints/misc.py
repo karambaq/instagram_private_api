@@ -67,12 +67,14 @@ class MiscEndpointsMixin(object):
         res = self._call_api('direct_share/recent_recipients/')
         return res
 
-    def news(self):
+    def news(self, **args):
         """
         Get news feed of accounts the logged in account is following.
         This returns the items in the 'Following' tab.
         """
-        return self._call_api('news/')
+        query = {}
+        query.update(kwargs)
+        return self._call_api('news/', query=query)
 
     def news_inbox(self):
         """
